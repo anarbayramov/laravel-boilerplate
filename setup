@@ -1,0 +1,66 @@
+set -aeuo pipefail
+if [ -f src/.env ]
+then
+	:
+else
+	printf "\e[31menv file not found ... PLEASE CHECK README FILE BEFORE STARTING"
+	exit
+fi
+
+source src/.env
+#todo remove 1 from boilerplate
+if [[ $APP_NAME = *"laravel1"* ]]; then
+	printf "\e[31mCHANGE YOUR PROJECT NAME ON .ENV file"
+	exit
+fi
+
+#ADD USER TO docker group so you dont have to run sudo with docker
+#sudo groupadd docker
+#sudo gpasswd -a $USER docker
+#sudo chown "$USER":"$USER" /home/"$USER"/.docker -R #TODO if folder does not exist it needs to be created
+#sudo chmod g+rwx "/home/$USER/.docker" -R
+
+
+
+#THINK IF THEY ARE REQUIRED
+
+#find src/ -type d -exec chmod 755 {} ;
+#find src/ -type d -exec chmod ug+s {} ;
+#find src/ -type f -exec chmod 644 {} ;
+#chmod -R 777 src/storage
+#chmod -R 777 src/bootstrap/cache/
+
+#mkdir -p src/bootstrap/cache storage storage/framework
+#mkdir -p src/storage/framework/sessions
+#mkdir -p src/storage/framework/views
+#mkdir -p src/storage/framework/cache
+
+cd docker
+#run docker-compose containers
+
+printf "Installing Containers"
+docker-compose -p $APP_NAME up -d mysql redis elasticsearch workspace
+
+if [ ! -d "../src/certs" ]; then
+  mkdir ../src/certs
+fi
+
+printf "Generating self-signed SSL certificate for local development"
+docker exec -ti $APP_NAME"_workspace_1" openssl req -x509 -sha256 -newkey rsa:2048 -keyout certs/local.key -out certs/local.pem -days 1024 -nodes -subj '/CN=localhost'
+
+printf "Creating databsase"
+docker exec -it $APP_NAME"_mysql_1" mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS "$DB_DATABASE ||
+( printf "\e[31mDatabase creation failed this problem mostly happens when database name already in use" && exit 1 )
+
+
+printf "Installing nginx container"
+docker-compose -p $APP_NAME up -d nginx
+
+#install composer packages
+printf "Installing composer packages"
+docker exec -it $APP_NAME"_workspace_1" composer install
+#install artisan key 
+printf "Generating Application Key"
+docker exec -it $APP_NAME"_workspace_1" php artisan key:generate
+printf "Installing npm packages"
+docker exec -it $APP_NAME"_workspace_1" npm install

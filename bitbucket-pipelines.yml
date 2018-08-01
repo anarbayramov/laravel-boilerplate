@@ -1,0 +1,23 @@
+# Continuous  Deployment Script
+image: atlassian/default-image:latest
+
+pipelines:
+  #default:
+    # - step:
+    #     script:
+    #      # - T@ODO RUN CODE TEST SCRIPTS
+  branches:
+    develop:
+      - step:
+          name: Deploy to staging
+          deployment: staging
+          script:
+            # DO NOT FORGET ADD STAGING SERVER SSH KEY TO PROJECT KEY
+            - deployment/staging/deploy.sh
+    master:
+      - step:
+          name: Deploy to production
+          deployment: production
+          script:
+            # DO NOT FORGET ADD PRODUCTION SERVER SSH KEY TO PROJECT KEY
+            -  deployment/staging/deploy.sh
