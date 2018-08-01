@@ -58,6 +58,10 @@ docker-compose -p $APP_NAME up -d nginx
 
 #install composer packages
 printf "Installing composer packages"
+
+#This line changes composer default repo to China to fix composer download issues from China"
+#docker exec -it $APP_NAME"_workspace_1" composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
 docker exec -it $APP_NAME"_workspace_1" composer install
 #install artisan key 
 printf "Generating Application Key"
