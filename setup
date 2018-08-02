@@ -30,10 +30,10 @@ fi
 #chmod -R 777 src/storage
 #chmod -R 777 src/bootstrap/cache/
 
-#mkdir -p src/bootstrap/cache storage storage/framework
-#mkdir -p src/storage/framework/sessions
-#mkdir -p src/storage/framework/views
-#mkdir -p src/storage/framework/cache
+mkdir -p src/bootstrap/cache storage storage/framework
+mkdir -p src/storage/framework/sessions
+mkdir -p src/storage/framework/views
+mkdir -p src/storage/framework/cache
 
 cd docker
 #run docker-compose containers
