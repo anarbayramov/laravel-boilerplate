@@ -323,8 +323,7 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
 
 # Add PATH for node
 #TODO Figure out why its not working with NODE_VERSION variable
-#ENV PATH $PATH:$NVM_DIR/versions/node/v${NODE_VERSION}/bin
-ENV PATH $PATH:$NVM_DIR/versions/node/v10.4.1/bin
+ENV PATH $PATH:$NVM_DIR/versions/node/v${NODE_VERSION}/bin
 
 RUN if [ ${NPM_REGISTRY} ]; then \
     . ~/.bashrc && npm config set registry ${NPM_REGISTRY} \
