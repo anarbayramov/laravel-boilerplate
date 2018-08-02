@@ -34,6 +34,7 @@ mkdir -p src/bootstrap/cache storage storage/framework
 mkdir -p src/storage/framework/sessions
 mkdir -p src/storage/framework/views
 mkdir -p src/storage/framework/cache
+mkdir -p src/certs
 
 cd docker
 #run docker-compose containers
@@ -41,9 +42,6 @@ cd docker
 printf "Installing Containers"
 docker-compose -p $APP_NAME up -d mysql redis elasticsearch workspace
 
-if [ ! -d "../src/certs" ]; then
-  mkdir ../src/certs
-fi
 
 printf "Generating self-signed SSL certificate for local development"
 docker exec -ti $APP_NAME"_workspace_1" openssl req -x509 -sha256 -newkey rsa:2048 -keyout certs/local.key -out certs/local.pem -days 1024 -nodes -subj '/CN=localhost'
