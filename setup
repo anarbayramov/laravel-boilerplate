@@ -40,7 +40,7 @@ cd docker
 #run docker-compose containers
 
 printf "Installing Containers"
-docker-compose -p $APP_NAME up -d mysql redis elasticsearch workspace
+docker-compose -p $APP_NAME build --no-cache mysql redis elasticsearch workspace
 
 
 printf "Generating self-signed SSL certificate for local development"
@@ -52,7 +52,7 @@ docker exec -it $APP_NAME"_mysql_1" mysql -uroot -proot -e "CREATE DATABASE IF N
 
 
 printf "Installing nginx container"
-docker-compose -p $APP_NAME up -d nginx
+docker-compose -p $APP_NAME build --no-cache nginx
 
 #install composer packages
 printf "Installing composer packages"
