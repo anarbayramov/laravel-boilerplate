@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: my_secret_pw_shh
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpass
+    ports:
+      - "9906:3306"
+  php:
+    image: php:7.4.3-fpm-alpine
+    depends_on:
+      - db
+    volumes:
+      - ../src:/var/www/html
+    ports:
+      - "8100:80"
+    stdin_open: true
+    tty: true
+  nginx:
+      image: nginx:1.17-alpine
+      ports:
+          - 80:80
+      volumes:
+          - ../src:/var/www/html
+          - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      depends_on:
+          - php
+  dev:
+      build: ./dev
+      volumes:
+          - ../src:/src

@@ -1,0 +1,19 @@
+{
+    "name": "anarbayramov/laravel-boilerplate",
+    "description": "Laravel 5.7 Boilerplate With Docker",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Anar Bayramov",
+            "email": "anr.bayramov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3"
+    },
+    "prefer-stable": true,
+    "config": {
+        "vendor-dir": "src/vendor"
+    }
+}
