@@ -1,11 +1,11 @@
-# Laravel 5.6 Boilerplate 
+# Laravel 5.6 Boilerplate
 
 ## What is Laravel Boilerplate
 
 ### Anar Bayramov 2018
 
 Laravel boilerplate provides you many basic and advanced features to start a new project.
-As each project requires different packages or libraries I tried to keep this one as simple as possible 
+As each project requires different packages or libraries I tried to keep this one as simple as possible
 
 currently Laravel boilerplate 5.6 Included
 
@@ -27,7 +27,7 @@ LaravelBoilerplate runs inside docker. In order to use it you must have Docker i
 * Clone project from source
 
 ```bash
- git clone git@github.com:anarbayramov/laravel-boilerplate.git <project-name>
+ git clone https://github.com/anarbayramov/laravel-boilerplate.git <project-name>
 ```
 * Inside src create new .env file from .env.example
 ```bash
@@ -43,14 +43,14 @@ LaravelBoilerplate runs inside docker. In order to use it you must have Docker i
 ```
 * Thats it!
 
-Your project should be online at http://localhost or https://localhost 
-Please be aware that you'll get `Your connection to this site is not secure` warning because of self signed SSL certificates are not trusted by default. You can search for `how to make self signed ssl certificates trust` based on your operating system. 
+Your project should be online at http://localhost or https://localhost
+Please be aware that you'll get `Your connection to this site is not secure` warning because of self signed SSL certificates are not trusted by default. You can search for `how to make self signed ssl certificates trust` based on your operating system.
 
 
 
 ## Continuous Deployment
 
-LaravelBoilerplate has bitbucket pipelines as default. In order to have auto deploy your code to your staging and production: 
+LaravelBoilerplate has bitbucket pipelines as default. In order to have auto deploy your code to your staging and production:
 1) You need to give SSH access to Bitbucket Pipeline
 2) You need to give SSH access from your server to your bitbucket account
 
