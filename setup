@@ -15,31 +15,13 @@ if [[ $APP_NAME = *"laravel1"* ]]; then
 fi
 
 #GENERATE DOCKER FILE
-./generate_env.sh
-
-#ADD USER TO docker group so you dont have to run sudo with docker
-#sudo groupadd docker
-#sudo gpasswd -a $USER docker
-#sudo chown "$USER":"$USER" /home/"$USER"/.docker -R #TODO if folder does not exist it needs to be created
-#sudo chmod g+rwx "/home/$USER/.docker" -R
+./scripts/generate_env.sh
 
 
 
-#THINK IF THEY ARE REQUIRED
+#PERMISSIONS
 
-#find src/ -type d -exec chmod 755 {} ;
-#find src/ -type d -exec chmod ug+s {} ;
-#find src/ -type f -exec chmod 644 {} ;
-#chmod -R 777 src/storage
-#chmod -R 777 src/bootstrap/cache/
-
-mkdir -p src/bootstrap/cache
-mkdir -p src/storage
-mkdir -p src/storage/framework
-mkdir -p src/storage/framework/sessions
-mkdir -p src/storage/framework/views
-mkdir -p src/storage/framework/cache
-mkdir -p src/certs
+./scripts/permissions_folders.sh
 
 cd docker
 #run docker-compose containers
@@ -51,6 +33,7 @@ docker-compose -p $APP_NAME up -d mysql redis elasticsearch workspace
 
 printf "Generating self-signed SSL certificate for local development"
 docker exec -ti $APP_NAME"_workspace_1" openssl req -x509 -sha256 -newkey rsa:2048 -keyout certs/local.key -out certs/local.pem -days 1024 -nodes -subj '/CN=localhost'
+
 
 printf "Creating databsase"
 docker exec -it $APP_NAME"_mysql_1" mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS "$DB_DATABASE ||
