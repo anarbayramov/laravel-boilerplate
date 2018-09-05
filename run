@@ -1,0 +1,4 @@
+set -aeuo pipefail
+source src/.env
+
+docker exec -ti -u laradock $APP_NAME"_workspace_1" $@

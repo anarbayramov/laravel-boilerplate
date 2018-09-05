@@ -1,0 +1,8 @@
+set -aeuo pipefail
+
+source src/.env
+
+cd docker
+#run docker-compose containers
+docker-compose -p $APP_NAME down
+
