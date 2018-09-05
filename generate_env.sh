@@ -1,4 +1,6 @@
-###########################################################
+source src/.env
+
+printf '###########################################################
 ###################### General Setup ######################
 ###########################################################
 
@@ -51,7 +53,7 @@ CHANGE_SOURCE=false
 
 ### Docker Sync ###########################################
 
-# If you are using Docker Sync. For `osx` use native_osx, for `windows` use unison, for `linux` docker-sync is not required
+# If you are using Docker Sync. For `osx` use 'native_osx', for `windows` use 'unison', for `linux` docker-sync is not required
 DOCKER_SYNC_STRATEGY=native_osx
 
 ###########################################################
@@ -129,8 +131,8 @@ PHP_WORKER_INSTALL_PGSQL=false
 
 ### NGINX #################################################
 
-NGINX_HOST_HTTP_PORT=80
-NGINX_HOST_HTTPS_PORT=443
+NGINX_HOST_HTTP_PORT='$NGINX_HOST_HTTP_PORT'
+NGINX_HOST_HTTPS_PORT='$NGINX_HOST_HTTPS_PORT'
 NGINX_HOST_LOG_PATH=./logs/nginx/
 NGINX_SITES_PATH=./nginx/sites/
 NGINX_PHP_UPSTREAM_CONTAINER=php-fpm
@@ -139,10 +141,10 @@ NGINX_PHP_UPSTREAM_PORT=9000
 ### MYSQL #################################################
 
 MYSQL_VERSION=5.7
-MYSQL_DATABASE=testdb
-MYSQL_USER=root
-MYSQL_PASSWORD=root
-MYSQL_PORT=3306
+MYSQL_DATABASE='$DB_DATABASE'
+MYSQL_USER='$DB_USERNAME'
+MYSQL_PASSWORD='$DB_PASSWORD'
+MYSQL_PORT='$DB_PORT'
 MYSQL_ROOT_PASSWORD=root
 MYSQL_ENTRYPOINT_INITDB=./mysql/docker-entrypoint-initdb.d
 
@@ -255,3 +257,4 @@ MONGODB_PORT=27017
 ### LARAVEL ECHO SERVER ###################################
 
 LARAVEL_ECHO_SERVER_PORT=6001
+' >docker/.env

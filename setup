@@ -14,6 +14,9 @@ if [[ $APP_NAME = *"laravel1"* ]]; then
 	exit
 fi
 
+#GENERATE DOCKER FILE
+./generate_env.sh
+
 #ADD USER TO docker group so you dont have to run sudo with docker
 #sudo groupadd docker
 #sudo gpasswd -a $USER docker
@@ -30,7 +33,9 @@ fi
 #chmod -R 777 src/storage
 #chmod -R 777 src/bootstrap/cache/
 
-mkdir -p src/bootstrap/cache storage storage/framework
+mkdir -p src/bootstrap/cache
+mkdir -p src/storage
+mkdir -p src/storage/framework
 mkdir -p src/storage/framework/sessions
 mkdir -p src/storage/framework/views
 mkdir -p src/storage/framework/cache
