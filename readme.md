@@ -1,4 +1,4 @@
-# Laravel 5.6 Boilerplate
+# Laravel 5.7 Boilerplate
 
 ## What is Laravel Boilerplate
 
