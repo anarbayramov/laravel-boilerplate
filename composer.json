@@ -8,6 +8,10 @@
                 "url": "git@github.com:anarbayramov/laravel-boilerplate.git",
                 "type": "git",
                 "reference": "master"
+            },
+            "autoload": {
+                "psr-4" : {
+                }
             }
         }
     }
