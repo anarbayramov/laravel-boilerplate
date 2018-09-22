@@ -1,0 +1,14 @@
+"repositories": [
+    {
+        "type": "vcs",
+        "package": {
+            "name": "anarbayramov/laravel-boilerplate",
+            "version": "2.0",
+            "source": {
+                "url": "git@github.com:anarbayramov/laravel-boilerplate.git",
+                "type": "git",
+                "reference": "master"
+            }
+        }
+    }
+],s
