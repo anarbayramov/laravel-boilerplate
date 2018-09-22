@@ -1,17 +1,17 @@
 set -aeuo pipefail
 if [ -f src/.env ]
 then
-	:
+    :
 else
-	printf "\e[31menv file not found ... PLEASE CHECK README FILE BEFORE STARTING"
-	exit
+    printf "\e[31menv file not found ... PLEASE CHECK README FILE BEFORE STARTING"
+    exit
 fi
 
 source src/.env
 #todo remove 1 from boilerplate
 if [[ $APP_NAME = *"laravel1"* ]]; then
-	printf "\e[31mCHANGE YOUR PROJECT NAME ON .ENV file"
-	exit
+    printf "\e[31mCHANGE YOUR PROJECT NAME ON .ENV file"
+    exit
 fi
 
 #GENERATE DOCKER FILE
@@ -35,9 +35,8 @@ printf "Generating self-signed SSL certificate for local development"
 docker exec -ti $APP_NAME"_workspace_1" openssl req -x509 -sha256 -newkey rsa:2048 -keyout certs/local.key -out certs/local.pem -days 1024 -nodes -subj '/CN=localhost'
 
 
-printf "Creating databsase"
-docker exec -it $APP_NAME"_mysql_1" mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS "$DB_DATABASE ||
-( printf "\e[31mDatabase creation failed this problem mostly happens when database name already in use" && exit 1 )
+printf "Creating database"
+docker exec -it $APP_NAME"_mysql_1" mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS "$DB_DATABASE
 
 
 printf "Installing nginx container"
