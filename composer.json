@@ -9,7 +9,6 @@
             "email": "anr.bayramov@gmail.com"
         }
     ],
-    "license": "mit",
     "require": {
         "php": "^7.1.3"
     },
