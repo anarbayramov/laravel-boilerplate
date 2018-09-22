@@ -24,10 +24,10 @@ LaravelBoilerplate runs inside docker. In order to use it you must have Docker i
 
 
 
-* Clone project from source
+* Install project project from source
 
 ```bash
- git clone https://github.com/anarbayramov/laravel-boilerplate.git <project-name>
+composer create-project --prefer-dist anarbayramov/laravel-boilerplate myproject
 ```
 * Inside src create new .env file from .env.example
 ```bash
