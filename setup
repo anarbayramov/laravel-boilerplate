@@ -47,9 +47,9 @@ docker-compose -p $APP_NAME up -d nginx
 printf "Installing composer packages"
 
 #This line changes composer default repo to China to fix composer download issues from China"
-#docker exec -it $APP_NAME"_workspace_1" composer config -g repo.packagist composer https://packagist.phpcomposer.com
+#docker exec -it $APP_NAME"_workspace_1" -u laradock composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
-docker exec -it $APP_NAME"_workspace_1" composer update --prefer-dist
+docker exec -it $APP_NAME"_workspace_1" -u laradock composer update --prefer-dist
 #install artisan key
 printf "Generating Application Key"
 docker exec -it $APP_NAME"_workspace_1" php artisan key:generate
