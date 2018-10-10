@@ -304,6 +304,18 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
         npm install -g gulp bower vue-cli \
 ;fi
 
+RUN if [ ${INSTALL_NODE} = true ]; then \
+    find $NVM_DIR -type f -name node -exec ln -s {} /usr/local/bin/node \; && \
+    NODE_MODS_DIR="$NVM_DIR/versions/node/$(node -v)/lib/node_modules" && \
+    ln -s $NODE_MODS_DIR/bower/bin/bower /usr/local/bin/bower && \
+    ln -s $NODE_MODS_DIR/gulp/bin/gulp.js /usr/local/bin/gulp && \
+    ln -s $NODE_MODS_DIR/npm/bin/npm-cli.js /usr/local/bin/npm && \
+    ln -s $NODE_MODS_DIR/npm/bin/npx-cli.js /usr/local/bin/npx && \
+    ln -s $NODE_MODS_DIR/vue-cli/bin/vue /usr/local/bin/vue && \
+    ln -s $NODE_MODS_DIR/vue-cli/bin/vue-init /usr/local/bin/vue-init && \
+    ln -s $NODE_MODS_DIR/vue-cli/bin/vue-list /usr/local/bin/vue-list \
+;fi
+
 # Wouldn't execute when added to the RUN statement in the above block
 # Source NVM when loading bash since ~/.profile isn't loaded on non-login shell
 RUN if [ ${INSTALL_NODE} = true ]; then \
@@ -323,7 +335,7 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
 
 # Add PATH for node
 #TODO Figure out why its not working with NODE_VERSION variable
-ENV PATH $PATH:$NVM_DIR/versions/node/v${NODE_VERSION}/bin
+#ENV PATH $PATH:$NVM_DIR/versions/node/v${NODE_VERSION}/bin
 
 RUN if [ ${NPM_REGISTRY} ]; then \
     . ~/.bashrc && npm config set registry ${NPM_REGISTRY} \

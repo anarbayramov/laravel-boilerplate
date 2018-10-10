@@ -1,5 +1,4 @@
 set -aeuo pipefail
 source src/.env
 
-#docker exec -it $APP_NAME"_workspace_1" npm $@
-docker exec -ti $APP_NAME"_workspace_1"  /home/laradock/.nvm/versions/node/v10.9.0/bin/node $@
+docker exec -it $APP_NAME"_workspace_1" npm $@
