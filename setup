@@ -50,7 +50,7 @@ printf "Installing composer packages"
 #docker exec -it $APP_NAME"_workspace_1" -u laradock composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 docker exec -it $APP_NAME"_workspace_1" -u laradock composer update --prefer-dist
-#install artisan key
+#generate artisan key
 printf "Generating Application Key"
 docker exec -it $APP_NAME"_workspace_1" php artisan key:generate
 printf "Installing npm packages"
