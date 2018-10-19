@@ -192,6 +192,7 @@ ARG INSTALL_XDEBUG=false
 ARG PHP_VERSION=${PHP_VERSION}
 
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
+    apt-get update && \
     # Load the xdebug extension only with phpunit commands
     apt-get install -y --force-yes php${PHP_VERSION}-xdebug && \
     sed -i 's/^;//g' /etc/php/${PHP_VERSION}/cli/conf.d/20-xdebug.ini && \
@@ -425,7 +426,7 @@ RUN if [ ${INSTALL_LARAVEL_INSTALLER} = true ]; then \
 
 ###########################################################################
 # Deployer:
-###########################################################################
+#######################################X####################################
 
 USER root
 
