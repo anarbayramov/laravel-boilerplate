@@ -163,7 +163,6 @@ return [
         /*
         * Manual Service Providers
          */
-        Spatie\Permission\PermissionServiceProvider::class,
        'Fideloper\Proxy\TrustedProxyServiceProvider',
 
 

@@ -4,23 +4,20 @@
 
 ### Anar Bayramov 2018
 
-Laravel boilerplate provides you many basic and advanced features to start a new project.
+Laravel Boilerplate provides you many basic and advanced features to start a new project.
 As each project requires different packages or libraries I tried to keep this one as simple as possible
 
-currently Laravel boilerplate 5.7 Included
+currently Laravel Boilerplate 5.7 Included
 
 * Laravel 5.7
 * Most used docker-containers with lots of dependencies (Credits and many thanks to [Laradock](https://github.com/laradock/laradock) as it is simplified version of laradock)
 * Local SSL and HTTPS using openssl
-* [Spatie Laravel Permission](https://github.com/spatie/laravel-permission)
-* [Laravel Elastic Search](https://github.com/cviebrock/laravel-elasticsearch)
-* [Laravel Collective](https://github.com/laravelcollective/html)
 * [Fideloper Proxy](https://github.com/fideloper/proxy)
 
 
 ## Installation
 
-LaravelBoilerplate runs inside docker. In order to use it you must have Docker installed on your local computer. For more please check official [Docker Documentation](https://docs.docker.com/install)
+Laravel Boilerplate runs inside docker. In order to use it you must have Docker installed on your local computer. For more please check official [Docker Documentation](https://docs.docker.com/install)
 
 
 
