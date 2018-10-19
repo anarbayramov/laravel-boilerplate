@@ -301,7 +301,8 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
         if [ ${NPM_REGISTRY} ]; then \
         npm config set registry ${NPM_REGISTRY} \
         ;fi && \
-        npm install -g gulp bower vue-cli \
+        npm install -g gulp bower vue-cli && \
+        ln -s `npm bin --global` /home/laradock/.node-bin \
 ;fi
 
 RUN if [ ${INSTALL_NODE} = true ]; then \
@@ -334,8 +335,7 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
 ;fi
 
 # Add PATH for node
-#TODO Figure out why its not working with NODE_VERSION variable
-#ENV PATH $PATH:$NVM_DIR/versions/node/v${NODE_VERSION}/bin
+ENV PATH $PATH:/home/laradock/.node-bin
 
 RUN if [ ${NPM_REGISTRY} ]; then \
     . ~/.bashrc && npm config set registry ${NPM_REGISTRY} \
@@ -539,7 +539,8 @@ USER root
 ARG INSTALL_IMAGEMAGICK=false
 
 RUN if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
-    apt-get install -y --force-yes imagemagick php-imagick \
+    apt-get update \
+    && apt-get install -y --force-yes imagemagick php-imagick \
 ;fi
 
 ###########################################################################
