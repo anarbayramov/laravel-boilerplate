@@ -1,4 +1,4 @@
 set -aeuo pipefail
 source src/.env
 
-docker exec -it $APP_NAME"_mysql_1" mysql -u root -proot $DB_DATABASE
+docker exec -it $APP_NAME"_mysql_1" mysql -u $DB_USERNAME -p$DB_PASSWORD $DB_DATABASE

@@ -13,7 +13,7 @@ APP_CODE_PATH_HOST=../src
 APP_CODE_PATH_CONTAINER=/var/www:cached
 
 # Choose storage path on your machine. For all storage systems
-DATA_PATH_HOST=./data
+DATA_PATH_HOST=../data
 
 ### Drivers ################################################
 
