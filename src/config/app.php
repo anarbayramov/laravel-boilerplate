@@ -164,7 +164,8 @@ return [
         /*
         * Manual Service Providers
          */
-       'Fideloper\Proxy\TrustedProxyServiceProvider',
+        'Fideloper\Proxy\TrustedProxyServiceProvider',
+        Clockwork\Support\Laravel\ClockworkServiceProvider::class,
 
 
     ],
