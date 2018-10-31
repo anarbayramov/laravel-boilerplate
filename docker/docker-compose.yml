@@ -174,7 +174,6 @@ services:
         - TZ=${WORKSPACE_TIMEZONE}
       volumes:
         - ${DATA_PATH_HOST}/mysql:/var/lib/mysql
-        - ${MYSQL_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
       ports:
         - "${MYSQL_PORT}:3306"
       networks:
