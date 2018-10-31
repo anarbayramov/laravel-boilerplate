@@ -1,4 +1,5 @@
 set -aeuo pipefail
+
 if [ -f src/.env ]
 then
     :
@@ -8,15 +9,9 @@ else
 fi
 
 source src/.env
-#todo remove 1 from boilerplate
-if [[ $APP_NAME = *"laravel1"* ]]; then
-    printf "\e[31mCHANGE YOUR PROJECT NAME ON .ENV file"
-    exit
-fi
 
-#GENERATE DOCKER FILE
+#GENERATE DOCKER ENV FILE
 ./scripts/generate_env.sh
-
 
 
 #PERMISSIONS
@@ -35,28 +30,20 @@ fi
 
 docker-compose -p $APP_NAME up -d mysql redis elasticsearch workspace
 
-
 printf "Generating self-signed SSL certificate for local development"
 docker exec -ti $APP_NAME"_workspace_1" openssl req -x509 -sha256 -newkey rsa:2048 -keyout certs/local.key -out certs/local.pem -days 1024 -nodes -subj '/CN=localhost'
 
 
-printf "Creating database"
-docker exec -it $APP_NAME"_mysql_1" mysql -u root -proot -e "CREATE DATABASE IF NOT EXISTS "$DB_DATABASE
-
-
 printf "Installing nginx container"
-#docker-compose -p $APP_NAME build --no-cache nginx
 docker-compose -p $APP_NAME up -d nginx
 
 #install composer packages
 printf "Installing composer packages"
-
-#This line changes composer default repo to China to fix composer download issues from China"
-#docker exec -u laradock -it $APP_NAME"_workspace_1" composer config -g repo.packagist composer https://packagist.phpcomposer.com
-
 docker exec -u laradock -it $APP_NAME"_workspace_1" composer update --prefer-dist
+
 #generate artisan key
 printf "Generating Application Key"
 docker exec -it $APP_NAME"_workspace_1" php artisan key:generate
+
 printf "Installing npm packages"
 docker exec -it $APP_NAME"_workspace_1" npm install
