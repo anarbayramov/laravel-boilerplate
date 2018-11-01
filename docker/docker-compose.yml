@@ -114,8 +114,6 @@ services:
         - ./logs/php-fpm/:/tmp/xdebug
       expose:
         - "9000"
-      ports:
-        - "9001:9001"
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
       networks:
