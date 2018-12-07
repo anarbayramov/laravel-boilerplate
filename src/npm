@@ -1,8 +1,0 @@
-set -aeuo pipefail
-source .env
-DOCKERPATH="."$APP_NAME"-docker"
-CONTAINERNAME=$APP_NAME"docker"
-
-#run docker-compose containers
-#docker exec -ti $CONTAINERNAME"_workspace_1" npm -a #TODO why npm doesnt work
-
