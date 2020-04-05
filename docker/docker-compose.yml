@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  db:
+  mysql:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: my_secret_pw_shh
@@ -9,17 +9,17 @@ services:
       MYSQL_USER: devuser
       MYSQL_PASSWORD: devpass
     ports:
-      - "9906:3306"
+        - 3306:3306
   php:
     build: ./php
     depends_on:
-      - db
+      - mysql
     volumes:
       - ../src:/var/www/html:delegated
-    ports:
-      - "8100:80"
     stdin_open: true
     tty: true
+    links:
+        - mysql
   nginx:
       image: nginx:1.17-alpine
       ports:
