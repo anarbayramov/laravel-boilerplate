@@ -4,7 +4,7 @@
 
 ### Anar Bayramov 2020
 
-Laravel Boilerplate provides you many basic development environment to develop with laravel and docker.
+Laravel Boilerplate provides you basic development environment to develop with laravel and docker.
 
 As each project requires different packages or libraries I tried to keep this one as simple as possible
 
