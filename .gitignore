@@ -1,5 +1,2 @@
 /.idea
 /data
-src/*
-!src/.gitkeep
-
