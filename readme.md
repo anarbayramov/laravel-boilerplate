@@ -1,3 +1,7 @@
+new setup
+docker exec -ti docker_dev_1 composer global require laravel/installer
+
+
 # Laravel 5.7 Boilerplate
 
 ## What is Laravel Boilerplate

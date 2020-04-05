@@ -1,9 +1,3 @@
-#
-#--------------------------------------------------------------------------
-# Image Setup
-#--------------------------------------------------------------------------
-#
-
 FROM phusion/baseimage:latest
 
 
@@ -16,12 +10,12 @@ ENV LC_CTYPE=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV TERM xterm
 
-# Add the "PHP 7" ppa
 RUN apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:ondrej/php
 
 
-# Install "PHP Extentions", "libraries", "Software's"
+RUN echo 'DPkg::options { "--force-confdef"; };' >> /etc/apt/apt.conf
+
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --allow-downgrades --allow-remove-essential \
@@ -55,7 +49,6 @@ RUN apt-get update && \
         vim \
     && apt-get clean
 
-# Install composer and add its bin to the PATH.
 RUN curl -s http://getcomposer.org/installer | php && \
     echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
     mv composer.phar /usr/local/bin/composer

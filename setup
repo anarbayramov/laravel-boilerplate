@@ -1,0 +1,2 @@
+docker exec -ti docker_dev_1 composer global require laravel/installer
+docker exec -ti docker_dev_1 composer create-project --prefer-dist laravel/laravel src
