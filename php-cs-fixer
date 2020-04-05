@@ -1,9 +1,0 @@
-set -aeuo pipefail
-
-source src/.env
-
-docker exec $APP_NAME"_workspace_1" php-cs-fixer $@
-
-
-
-

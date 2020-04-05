@@ -1,6 +1,0 @@
-set -aeuo pipefail 
-source src/.env
-
-docker exec -it $APP_NAME"_workspace_1" npm run watch
-
-
