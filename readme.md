@@ -1,27 +1,23 @@
-new setup
-docker exec -ti docker_dev_1 composer global require laravel/installer
-
-
-# Laravel 5.7 Boilerplate
+# Laravel 7 Boilerplate
 
 ## What is Laravel Boilerplate
 
-### Anar Bayramov 2018
+### Anar Bayramov 2020
 
-Laravel Boilerplate provides you many basic and advanced features to start a new project.
+Laravel Boilerplate provides you many basic development environment to develop with laravel and docker.
+
 As each project requires different packages or libraries I tried to keep this one as simple as possible
 
-currently Laravel Boilerplate 5.7 Included
+currently Laravel Boilerplate 7 Included
 
-* Laravel 5.7
-* Most used docker-containers with lots of dependencies (Credits and many thanks to [Laradock](https://github.com/laradock/laradock) as it is simplified version of laradock)
-* Local SSL and HTTPS using openssl
+* Laravel 7
+* Most used docker-containers with basic dependencies 
 * [Fideloper Proxy](https://github.com/fideloper/proxy)
 
 
 ## Installation
 
-Laravel Boilerplate runs inside docker. In order to use it you must have Docker installed on your local computer. For more please check official [Docker Documentation](https://docs.docker.com/install)
+Laravel Boilerplate runs inside docker. In order to use it you must have Docker and docker-compose installed in your local machine. For more please check official [Docker Documentation](https://docs.docker.com/install)
 
 
 
